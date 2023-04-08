@@ -2,6 +2,14 @@
 
 # Goal of Recommender System
 
+<pre>
+Recommender Systems
+	Content-Based Filtering
+	Collaborative Filtering
+		User-Based
+		Item-Based
+</pre>
+
 Neighborhood based
 
 Abundunce of data on the web.
