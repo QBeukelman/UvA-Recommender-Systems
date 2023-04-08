@@ -6,7 +6,7 @@
 #    By: quentinbeukelman <quentinbeukelman@stud      +#+                      #
 #                                                    +#+                       #
 #    Created: 2023/04/08 07:20:20 by quentinbeuk   #+#    #+#                  #
-#    Updated: 2023/04/08 12:56:47 by quentinbeuk   ########   odam.nl          #
+#    Updated: 2023/04/08 12:58:53 by quentinbeuk   ########   odam.nl          #
 #                                                                              #
 # **************************************************************************** #
 
@@ -95,8 +95,9 @@ def ft_load_ratings_table():
         pad_rows = np.zeros((num_movies - num_users, num_movies))
         ratings_table = pd.concat([ratings_table, pd.DataFrame(pad_rows)])
 
-    ratings_table = ratings_table.iloc[:50, :]
-    ratings_table = ratings_table.iloc[:, :50]
+    # Range of sample set
+    ratings_table = ratings_table.iloc[:200, :]
+    ratings_table = ratings_table.iloc[:, :200]
 
     print(ratings_table)
     return ratings_table
@@ -127,7 +128,4 @@ def main():
     
 if __name__ == '__main__':
     main()
-
-
-
 
