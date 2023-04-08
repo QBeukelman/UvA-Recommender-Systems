@@ -1,12 +1,12 @@
 # **************************************************************************** #
 #                                                                              #
 #                                                         ::::::::             #
-#    nearest_neighbour.py                               :+:    :+:             #
+#    nearest_neighbour_old.py                           :+:    :+:             #
 #                                                      +:+                     #
 #    By: quentinbeukelman <quentinbeukelman@stud      +#+                      #
 #                                                    +#+                       #
-#    Created: 2023/04/08 07:20:20 by quentinbeuk   #+#    #+#                  #
-#    Updated: 2023/04/08 12:56:47 by quentinbeuk   ########   odam.nl          #
+#    Created: 2023/04/08 12:56:06 by quentinbeuk   #+#    #+#                  #
+#    Updated: 2023/04/08 12:56:29 by quentinbeuk   ########   odam.nl          #
 #                                                                              #
 # **************************************************************************** #
 
@@ -129,5 +129,44 @@ if __name__ == '__main__':
     main()
 
 
+# # ==============================================================================: Similar Users
+# def ft_find_similar_users(user_id, movie_title, ratings_table):
+# 	# 1. Calculate similarity 
+# 		# --> Similarity Matrix (-1 to 1) 
+# 		# --> To what extent is one film a good indicator for another film
+# 	# 2. Find a neighbourhood
+# 	# 3. Find a Rating form neighbourhood
+# 	# 4. Determine which item to recommend
 
 
+# # ==============================================================================: Rating Bool
+# def ft_rating_is_present(rating):
+# 	if pd.isnull(rating):
+# 		return True
+# 	else:
+# 		return False
+
+
+# # ==============================================================================: Ratings
+# def ft_fill_in_ratings(ratings_table):
+
+# 	user_index = 0
+
+# 	# Loop through each user in the ratings table
+# 	while user_index < len(ratings_table.index):
+# 		user_id = ratings_table.index[user_index]
+# 		# print("User ID:", user_id)
+
+# 		# Loop through each movie in the ratings table
+# 		movie_index = 0
+# 		rating_count = 0
+# 		while movie_index < len(ratings_table.columns):
+
+# 			movie_title = ratings_table.columns[movie_index]
+# 			rating = ratings_table.loc[user_id, movie_title]
+
+# 			if ft_rating_is_present(rating):
+# 				rating_count += 1
+# 				ft_find_similar_users(user_id, movie_title, ratings_table)
+
+# 			movie_index += 1
