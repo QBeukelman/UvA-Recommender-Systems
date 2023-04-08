@@ -6,7 +6,7 @@
 #    By: quentinbeukelman <quentinbeukelman@stud      +#+                      #
 #                                                    +#+                       #
 #    Created: 2023/04/08 07:20:20 by quentinbeuk   #+#    #+#                  #
-#    Updated: 2023/04/08 11:03:53 by quentinbeuk   ########   odam.nl          #
+#    Updated: 2023/04/08 12:53:14 by quentinbeuk   ########   odam.nl          #
 #                                                                              #
 # **************************************************************************** #
 
@@ -14,7 +14,10 @@ import pandas as pd
 import numpy as np
 import math
 import argparse
+import matplotlib.pyplot as plt
 from scipy import sparse
+import re
+
 
 # 		 M1		  M2	  M3	
 # M1	  1		-0.12	 0.16
@@ -23,42 +26,38 @@ from scipy import sparse
 
 # ==============================================================================: Similarity Matrix
 def ft_similarity_matrix(ratings_table, user_ids):
-    # Normalize the ratings_table by subtracting the mean of each row
-    normalized_ratings = ratings_table.apply(lambda x: (x - np.mean(x)), axis=1)
-
-    # Create three lists to be used to create the sparse matrix
-    movie_ids = list(normalized_ratings.columns)
-    movie_ratings = [list(normalized_ratings.iloc[i]) for i in range(len(normalized_ratings))]
-
-    # Get the total number of unique users and movies
-    num_users = ratings_table.shape[0]
-    num_movies = ratings_table.shape[1]
-
-    # Indices start at 0 and end at num_users-1 and num_movies-1
-    movie_ids = [int(x) - 1 for x in movie_ids]
-    movie_ids = [x - 1 for x in movie_ids]
-
-    # Create the sparse matrix
-    ratings_sparse = sparse.coo_matrix((movie_ratings, (user_ids, movie_ids)), shape=(num_users, num_movies))
-
-    # Compute the cosine similarity matrix
-    similarity_matrix = cosine_similarity(ratings_sparse.T, dense_output=False)
-    return similarity_matrix
-
-
-def ft_cosine_similarity(matrix):
-    num_rows, num_cols = matrix.shape
-    similarity_matrix = np.zeros((num_rows, num_rows))
-
-    for i in range(num_rows):
-        for j in range(i+1, num_rows):
-            dot_product = sum(matrix[i,k]*matrix[j,k] for k in range(num_cols))
-            magnitude1 = math.sqrt(sum([val**2 for val in matrix[i,:]]))
-            magnitude2 = math.sqrt(sum([val**2 for val in matrix[j,:]]))
-            similarity_matrix[i,j] = dot_product/(magnitude1*magnitude2)
+    num_users = len(user_ids)
+    similarity_matrix = np.zeros((num_users, num_users))
+    for i in range(num_users):
+        for j in range(i, num_users):
+            user1 = user_ids[i]
+            user2 = user_ids[j]
+            if user1 not in ratings_table.index or user2 not in ratings_table.index:
+                continue
+            movie_ratings1 = ratings_table.loc[user1].values
+            movie_ratings2 = ratings_table.loc[user2].values
+            common_movies = np.logical_and(~np.isnan(movie_ratings1), ~np.isnan(movie_ratings2))
+            if np.sum(common_movies) < 2:
+                continue
+            movie_ratings1 = movie_ratings1[common_movies]
+            movie_ratings2 = movie_ratings2[common_movies]
+            similarity_matrix[i,j] = ft_cosine_similarity(movie_ratings1, movie_ratings2)
             similarity_matrix[j,i] = similarity_matrix[i,j]
-
     return similarity_matrix
+
+
+def ft_cosine_similarity(array1, array2):
+    dot_product = sum(array1[i]*array2[i] for i in range(len(array1)))
+    magnitude1 = math.sqrt(sum([val**2 for val in array1]))
+    magnitude2 = math.sqrt(sum([val**2 for val in array2]))
+    
+    # check for division by zero
+    if magnitude1 == 0 or magnitude2 == 0:
+        return 0
+    
+    similarity = dot_product/(magnitude1*magnitude2)
+    return similarity
+
 
 
 # ==============================================================================: Utility Matrix
@@ -67,43 +66,64 @@ def ft_load_ratings_table():
     movies_df = pd.read_csv('../data/movies.csv') # Features
     ratings_df = pd.read_csv('../data/ratings.csv') # Data Points
     merged_df = pd.merge(movies_df, ratings_df, on='movieId')
-    # Remove columns with non-integer movie IDs
-    invalid_columns = [col for col in merged_df.columns if not col.startswith("movieId_")]
-    merged_df.drop(columns=invalid_columns, inplace=True)
     
+    # Remove rows with non-integer movie IDs
+    merged_df = merged_df[merged_df['movieId'].astype(str).str.isdigit()]
+    # Remove non-numeric characters from title column
+    merged_df['title'] = merged_df['title'].str.replace(r'\D', '')
+
+    # Remove non-numeric characters from title column
+    user_ids = []
+    for user_id in merged_df['userId'].unique():
+        user_ratings = merged_df[merged_df['userId'] == user_id]
+        movie_ids = [x for x in user_ratings['title'].tolist() if x != '']  # <-- Skip movies with empty ids
+        user_ids.append(user_id)
+        # print(f"User {user_id} movie IDs: {movie_ids}")
+            
     # Utility Matrix
-    ratings_table = pd.pivot_table(merged_df, values='rating', index=['userId'], columns=['title']) # columns=['title']
+    ratings_table = pd.pivot_table(merged_df, values='rating', index=['userId'], columns=['title'])
+    ratings_table.fillna(0, inplace=True)
+
+    # Check dimensions of ratings table
+    num_users, num_movies = ratings_table.shape
+
+    # Reshape ratings table to have same number of rows and columns
+    if num_users > num_movies:
+        pad_cols = np.zeros((num_users, num_users - num_movies))
+        ratings_table = pd.concat([ratings_table, pd.DataFrame(pad_cols)], axis=1)
+    else:
+        pad_rows = np.zeros((num_movies - num_users, num_movies))
+        ratings_table = pd.concat([ratings_table, pd.DataFrame(pad_rows)])
+
+    ratings_table = ratings_table.iloc[:50, :]
+    ratings_table = ratings_table.iloc[:, :50]
+
+    print(ratings_table)
     return ratings_table
+
 
 
 
 # ==============================================================================: MAIN
 def main():
+    
     # Load ratings table
     ratings_table = ft_load_ratings_table()
     # print(ratings_table.columns)
 
-    # # Extract user IDs
-    # user_ids = list(ratings_table.index)
+    # Extract user IDs
+    user_ids = list(ratings_table.index)
 
-    # # Calculate similarity matrix
-    # similarity_matrix = ft_similarity_matrix(ratings_table, user_ids)
-
-    # # Find nearest neighbors
-    # k = 10
-    # nearest_neighbors = ft_find_nearest_neighbors(similarity_matrix, k)
-
-    # # Print results
-    # print("Nearest neighbors:")
-    # print(nearest_neighbors)
+    # Calculate similarity matrix
+    similarity_matrix = ft_similarity_matrix(ratings_table, user_ids)
     
     # Heatmap
-    # plt.imshow(similarity_matrix, cmap='hot', interpolation='nearest')
-    # plt.title('Movie Similarity Heatmap')
-    # plt.xlabel('Movie ID')
-    # plt.ylabel('Movie ID')
-    # plt.colorbar()
-    # plt.show()
+    plt.imshow(similarity_matrix, cmap='hot', interpolation='nearest')
+    plt.title('Movie Similarity Heatmap')
+    plt.xlabel('Movie ID')
+    plt.ylabel('Movie ID')
+    plt.colorbar()
+    plt.show()
     
 if __name__ == '__main__':
     main()
