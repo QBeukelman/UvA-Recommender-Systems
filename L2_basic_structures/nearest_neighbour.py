@@ -6,7 +6,7 @@
 #    By: quentinbeukelman <quentinbeukelman@stud      +#+                      #
 #                                                    +#+                       #
 #    Created: 2023/04/08 07:20:20 by quentinbeuk   #+#    #+#                  #
-#    Updated: 2023/04/08 12:58:53 by quentinbeuk   ########   odam.nl          #
+#    Updated: 2023/04/11 10:37:34 by quentinbeuk   ########   odam.nl          #
 #                                                                              #
 # **************************************************************************** #
 
@@ -96,8 +96,8 @@ def ft_load_ratings_table():
         ratings_table = pd.concat([ratings_table, pd.DataFrame(pad_rows)])
 
     # Range of sample set
-    ratings_table = ratings_table.iloc[:200, :]
-    ratings_table = ratings_table.iloc[:, :200]
+    ratings_table = ratings_table.iloc[:400, :]
+    ratings_table = ratings_table.iloc[:, :400]
 
     print(ratings_table)
     return ratings_table
@@ -119,6 +119,7 @@ def main():
     similarity_matrix = ft_similarity_matrix(ratings_table, user_ids)
     
     # Heatmap
+    plt.figure(figsize=(12,12))
     plt.imshow(similarity_matrix, cmap='hot', interpolation='nearest')
     plt.title('Movie Similarity Heatmap')
     plt.xlabel('Movie ID')
