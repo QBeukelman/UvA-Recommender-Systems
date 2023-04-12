@@ -7,6 +7,14 @@
 <br />
 
 
+# Types of similarity measurements
+
+- Euclidean Similarity
+- Pearson Correlation
+- Cosine Similarity
+
+<br />
+
 
 # The dataset
 

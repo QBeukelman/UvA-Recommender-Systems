@@ -6,7 +6,7 @@
 #    By: quentinbeukelman <quentinbeukelman@stud      +#+                      #
 #                                                    +#+                       #
 #    Created: 2023/04/11 12:50:06 by quentinbeuk   #+#    #+#                  #
-#    Updated: 2023/04/12 13:51:10 by quentinbeuk   ########   odam.nl          #
+#    Updated: 2023/04/12 14:45:11 by quentinbeuk   ########   odam.nl          #
 #                                                                              #
 # **************************************************************************** #
 
@@ -69,7 +69,7 @@ def ft_load_ratings_table():
     # Remove rows with non-integer movie IDs
     merged_df = merged_df[merged_df['movieId'].astype(str).str.isdigit()]
     # Remove non-numeric characters from title column
-    merged_df['title'] = merged_df['title'].str.replace(r'\D', '')
+    merged_df['title'] = merged_df['title'].str.replace(r'\D', '', regex=True)
 
     # Remove non-numeric characters from title column
     user_ids = []
@@ -114,14 +114,19 @@ def main():
     # Calculate similarity matrix
     similarity_matrix = ft_similarity_matrix(ratings_table, user_ids)
     
+	# Write similarity matrix to CSV file
+    similarity_matrix_df = pd.DataFrame(similarity_matrix, index=user_ids, columns=user_ids)
+    similarity_matrix_df.to_csv('similarity_matrix.csv', index=True, header=True)
+
+    
     # Heatmap
-    plt.figure(figsize=(12,12))
-    plt.imshow(similarity_matrix, cmap='hot', interpolation='nearest')
-    plt.title('Movie Similarity Heatmap')
-    plt.xlabel('Movie ID')
-    plt.ylabel('Movie ID')
-    plt.colorbar()
-    plt.show()
+    # plt.figure(figsize=(12,12))
+    # plt.imshow(similarity_matrix, cmap='hot', interpolation='nearest')
+    # plt.title('Movie Similarity Heatmap')
+    # plt.xlabel('Movie ID')
+    # plt.ylabel('Movie ID')
+    # plt.colorbar()
+    # plt.show()
     
 if __name__ == '__main__':
     main()
