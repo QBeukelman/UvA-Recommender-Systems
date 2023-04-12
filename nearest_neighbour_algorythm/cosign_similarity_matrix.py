@@ -1,12 +1,12 @@
 # **************************************************************************** #
 #                                                                              #
 #                                                         ::::::::             #
-#    similarity_matrix.py                               :+:    :+:             #
+#    cosign_similarity_matrix.py                        :+:    :+:             #
 #                                                      +:+                     #
 #    By: quentinbeukelman <quentinbeukelman@stud      +#+                      #
 #                                                    +#+                       #
 #    Created: 2023/04/11 12:50:06 by quentinbeuk   #+#    #+#                  #
-#    Updated: 2023/04/12 14:45:11 by quentinbeuk   ########   odam.nl          #
+#    Updated: 2023/04/12 15:31:30 by quentinbeuk   ########   odam.nl          #
 #                                                                              #
 # **************************************************************************** #
 
@@ -46,9 +46,24 @@ def ft_similarity_matrix(ratings_table, user_ids):
 
 
 def ft_cosine_similarity(array1, array2):
-    dot_product = sum(array1[i]*array2[i] for i in range(len(array1)))
-    magnitude1 = math.sqrt(sum([val**2 for val in array1]))
-    magnitude2 = math.sqrt(sum([val**2 for val in array2]))
+    
+    # Calculate dot product of the two arrays
+    i = 0
+    dot_product = 0
+    while i < len(array1):
+        dot_product += array1[i] * array2[i]
+        i += 1
+    
+    # Calculate magnitudes of each array
+    i = 0
+    magnitude1 = 0
+    magnitude2 = 0
+    while i < len(array1):
+        magnitude1 += array1[i] ** 2
+        magnitude2 += array2[i] ** 2
+        i += 1
+    magnitude1 = math.sqrt(magnitude1)
+    magnitude2 = math.sqrt(magnitude2)
     
     # check for division by zero
     if magnitude1 == 0 or magnitude2 == 0:
@@ -115,18 +130,17 @@ def main():
     similarity_matrix = ft_similarity_matrix(ratings_table, user_ids)
     
 	# Write similarity matrix to CSV file
-    similarity_matrix_df = pd.DataFrame(similarity_matrix, index=user_ids, columns=user_ids)
-    similarity_matrix_df.to_csv('similarity_matrix.csv', index=True, header=True)
-
+    # similarity_matrix_df = pd.DataFrame(similarity_matrix, index=user_ids, columns=user_ids)
+    # similarity_matrix_df.to_csv('../data/cosign_similarity_matrix.csv', index=True, header=True)
     
     # Heatmap
-    # plt.figure(figsize=(12,12))
-    # plt.imshow(similarity_matrix, cmap='hot', interpolation='nearest')
-    # plt.title('Movie Similarity Heatmap')
-    # plt.xlabel('Movie ID')
-    # plt.ylabel('Movie ID')
-    # plt.colorbar()
-    # plt.show()
+    plt.figure(figsize=(12,12))
+    plt.imshow(similarity_matrix, cmap='hot', interpolation='nearest')
+    plt.title('Movie Similarity Heatmap')
+    plt.xlabel('Movie ID')
+    plt.ylabel('Movie ID')
+    plt.colorbar()
+    plt.show()
     
 if __name__ == '__main__':
     main()
