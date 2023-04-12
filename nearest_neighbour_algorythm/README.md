@@ -40,3 +40,4 @@ MovieLens
 ![Utility Matrix Heatmap](../media/similarity_matrix.png)
 
 <br />
+

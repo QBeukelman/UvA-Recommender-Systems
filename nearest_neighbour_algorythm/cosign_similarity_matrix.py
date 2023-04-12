@@ -6,7 +6,7 @@
 #    By: quentinbeukelman <quentinbeukelman@stud      +#+                      #
 #                                                    +#+                       #
 #    Created: 2023/04/11 12:50:06 by quentinbeuk   #+#    #+#                  #
-#    Updated: 2023/04/12 15:31:30 by quentinbeuk   ########   odam.nl          #
+#    Updated: 2023/04/12 16:22:24 by quentinbeuk   ########   odam.nl          #
 #                                                                              #
 # **************************************************************************** #
 
@@ -144,3 +144,4 @@ def main():
     
 if __name__ == '__main__':
     main()
+

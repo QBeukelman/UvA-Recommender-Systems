@@ -6,7 +6,7 @@
 #    By: quentinbeukelman <quentinbeukelman@stud      +#+                      #
 #                                                    +#+                       #
 #    Created: 2023/04/12 15:16:21 by quentinbeuk   #+#    #+#                  #
-#    Updated: 2023/04/12 15:16:24 by quentinbeuk   ########   odam.nl          #
+#    Updated: 2023/04/12 16:22:13 by quentinbeuk   ########   odam.nl          #
 #                                                                              #
 # **************************************************************************** #
 
@@ -40,3 +40,4 @@ plt.yticks(fontsize=6)
 plt.subplots_adjust(bottom=0.24)
 
 plt.show()
+
