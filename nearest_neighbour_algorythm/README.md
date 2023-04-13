@@ -27,7 +27,18 @@ MovieLens
 
 # Utility Matrix
 
-![Similarity Matirx Heatmap](../media/utility_matrix.png)
+## Two-Dimentional
+
+If the user has given a rating for the third movie "Body Parts", points are blue, otherwise red.
+
+![2D Utility Matirx Heatmap](../media/2D_utility_matrix.png)
+
+<br />
+
+
+## Milti-Dimentional
+
+![Utility Matirx Heatmap](../media/utility_matrix.png)
 
 <br />
 
@@ -37,7 +48,9 @@ MovieLens
 [400 rows]
 [400 cols]
 
-![Utility Matrix Heatmap](../media/similarity_matrix.png)
+The problem with the similarity martix is that we have assumed that absent ratings are 0. To fix this we can use a Centered-Cosign. Normalise the ratings of a given user by subtracting the row mean.
+
+![Similarity Matrix Heatmap](../media/similarity_matrix.png)
 
 <br />
 

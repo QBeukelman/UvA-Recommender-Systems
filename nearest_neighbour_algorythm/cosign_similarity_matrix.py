@@ -6,7 +6,7 @@
 #    By: quentinbeukelman <quentinbeukelman@stud      +#+                      #
 #                                                    +#+                       #
 #    Created: 2023/04/11 12:50:06 by quentinbeuk   #+#    #+#                  #
-#    Updated: 2023/04/12 16:22:24 by quentinbeuk   ########   odam.nl          #
+#    Updated: 2023/04/13 08:41:17 by quentinbeuk   ########   odam.nl          #
 #                                                                              #
 # **************************************************************************** #
 
@@ -17,6 +17,7 @@ import matplotlib.pyplot as plt
 from scipy import sparse
 import re
 
+# Normalized Cosign Similarity Matrix
 
 # 		 M1		  M2	  M3	
 # M1	  1		-0.12	 0.16
@@ -27,25 +28,36 @@ import re
 def ft_similarity_matrix(ratings_table, user_ids):
     num_users = len(user_ids)
     similarity_matrix = np.zeros((num_users, num_users))
-    for i in range(num_users):
-        for j in range(i, num_users):
+    i = 0
+    while i < num_users:
+        j = i
+        while j < num_users:
             user1 = user_ids[i]
             user2 = user_ids[j]
             if user1 not in ratings_table.index or user2 not in ratings_table.index:
+                j += 1
                 continue
             movie_ratings1 = ratings_table.loc[user1].values
             movie_ratings2 = ratings_table.loc[user2].values
             common_movies = np.logical_and(~np.isnan(movie_ratings1), ~np.isnan(movie_ratings2))
             if np.sum(common_movies) < 2:
+                j += 1
                 continue
             movie_ratings1 = movie_ratings1[common_movies]
             movie_ratings2 = movie_ratings2[common_movies]
             similarity_matrix[i,j] = ft_cosine_similarity(movie_ratings1, movie_ratings2)
             similarity_matrix[j,i] = similarity_matrix[i,j]
+            j += 1
+        i += 1
     return similarity_matrix
 
 
 def ft_cosine_similarity(array1, array2):
+    # Subtract the row mean from each array
+    mean1 = np.nanmean(array1)
+    array1 = array1 - mean1
+    mean2 = np.nanmean(array2)
+    array2 = array2 - mean2
     
     # Calculate dot product of the two arrays
     i = 0
@@ -69,7 +81,7 @@ def ft_cosine_similarity(array1, array2):
     if magnitude1 == 0 or magnitude2 == 0:
         return 0
     
-    similarity = dot_product/(magnitude1*magnitude2)
+    similarity = dot_product / (magnitude1 * magnitude2)
     return similarity
 
 
