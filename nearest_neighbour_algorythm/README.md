@@ -13,8 +13,11 @@
 - Define threshold
 
 - Same movies recommended
-- Include catagories, with mixer 
+- Include catagories, with mixer
 
+
+
+     
 <br />
 
 
@@ -41,6 +44,9 @@ MovieLens
 ## Two-Dimentional
 
 If the user has given a rating for the third movie "Body Parts", points are blue, otherwise red.
+
+$$\text{cosine\_similarity}(\mathbf{A},\mathbf{B}) = \frac{\mathbf{A}\cdot\mathbf{B}}{\|\mathbf{A}\|\|\mathbf{B}\|}$$
+
 
 ![2D Utility Matirx Heatmap](../media/2D_utility_matrix.png)
 
