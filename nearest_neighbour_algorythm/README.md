@@ -7,6 +7,17 @@
 <br />
 
 
+# To-Do
+
+- Define K
+- Define threshold
+
+- Same movies recommended
+- Include catagories, with mixer 
+
+<br />
+
+
 # Types of similarity measurements
 
 - Euclidean Similarity
