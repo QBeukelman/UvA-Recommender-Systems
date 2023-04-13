@@ -45,7 +45,7 @@ MovieLens
 
 If the user has given a rating for the third movie "Body Parts", points are blue, otherwise red.
 
-$$\text{cosine\textunderscore similarity}(\mathbf{A},\mathbf{B}) = \frac{\mathbf{A}\cdot\mathbf{B}}{\|\mathbf{A}\|\|\mathbf{B}\|}$$
+$$\cos(\mathbf{A},\mathbf{B}) = \frac{\mathbf{A} \cdot \mathbf{B}}{\|\mathbf{A}\| \|\mathbf{B}\|}$$
 
 
 ![2D Utility Matirx Heatmap](../media/2D_utility_matrix.png)
