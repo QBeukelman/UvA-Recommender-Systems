@@ -6,7 +6,7 @@
 #    By: quentinbeukelman <quentinbeukelman@stud      +#+                      #
 #                                                    +#+                       #
 #    Created: 2023/04/12 15:16:21 by quentinbeuk   #+#    #+#                  #
-#    Updated: 2023/04/12 16:22:13 by quentinbeuk   ########   odam.nl          #
+#    Updated: 2023/04/14 13:06:22 by quentinbeuk   ########   odam.nl          #
 #                                                                              #
 # **************************************************************************** #
 
@@ -24,6 +24,9 @@ merged_df = pd.merge(movies_df, ratings_df, on='movieId')
 
 # Create a pivot table with user IDs as rows, movie titles as columns, and ratings as values
 ratings_table = pd.pivot_table(merged_df, values='rating', index=['userId'], columns=['title'])
+
+# Save the pivot table to a .csv file called utility_matrix
+# ratings_table.to_csv('../data/utility_matrix.csv')
 
 # Create the heatmap
 plt.figure(figsize=(12,12))
