@@ -6,7 +6,7 @@
 #    By: quentinbeukelman <quentinbeukelman@stud      +#+                      #
 #                                                    +#+                       #
 #    Created: 2023/04/11 12:50:06 by quentinbeuk   #+#    #+#                  #
-#    Updated: 2023/04/14 13:56:17 by quentinbeuk   ########   odam.nl          #
+#    Updated: 2023/04/15 22:36:41 by quentinbeuk   ########   odam.nl          #
 #                                                                              #
 # **************************************************************************** #
 
@@ -142,8 +142,8 @@ def main():
     similarity_matrix = ft_similarity_matrix(ratings_table, user_ids)
     
 	# Write similarity matrix to CSV file
-    similarity_matrix_df = pd.DataFrame(similarity_matrix, index=user_ids, columns=user_ids)
-    similarity_matrix_df.to_csv('../data/cosign_similarity_matrix.csv', index=True, header=True)
+    # similarity_matrix_df = pd.DataFrame(similarity_matrix, index=user_ids, columns=user_ids)
+    # similarity_matrix_df.to_csv('../data/cosign_similarity_matrix.csv', index=True, header=True)
     
     # Heatmap
     plt.figure(figsize=(12,12))

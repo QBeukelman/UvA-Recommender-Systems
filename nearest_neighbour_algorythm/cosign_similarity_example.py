@@ -6,7 +6,7 @@
 #    By: quentinbeukelman <quentinbeukelman@stud      +#+                      #
 #                                                    +#+                       #
 #    Created: 2023/04/14 12:33:29 by quentinbeuk   #+#    #+#                  #
-#    Updated: 2023/04/14 12:51:29 by quentinbeuk   ########   odam.nl          #
+#    Updated: 2023/04/14 14:39:36 by quentinbeuk   ########   odam.nl          #
 #                                                                              #
 # **************************************************************************** #
 
@@ -63,8 +63,8 @@ def ft_scatter_plot(ratings, pulp_fiction_ratings, forrest_gump_ratings, body_pa
         plt.scatter(user_ratings['rating_pulp'], user_ratings['rating_gump'], color=color, alpha=0.03, s=500)
 
     plt.text(1, 1, r'θ', color='green', fontsize=30)
-    plt.text(4.8, 4.18, r'User 0', color='green', fontsize=20)
-    plt.text(2.8, 4.18, r'User 1', color='green', fontsize=20)
+    plt.text(4.8, 4.18, r'User 1', color='green', fontsize=20)
+    plt.text(2.8, 4.18, r'User 0', color='green', fontsize=20)
     
     # Set the plot title and axis labels
     plt.title('Ratings for Forrest Gump and Pulp Fiction')
