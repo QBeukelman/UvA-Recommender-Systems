@@ -1,12 +1,12 @@
 # **************************************************************************** #
 #                                                                              #
 #                                                         ::::::::             #
-#    cosign_similarity_example.py                       :+:    :+:             #
+#    euclidean_similarity_example.py                    :+:    :+:             #
 #                                                      +:+                     #
 #    By: quentinbeukelman <quentinbeukelman@stud      +#+                      #
 #                                                    +#+                       #
-#    Created: 2023/04/14 12:33:29 by quentinbeuk   #+#    #+#                  #
-#    Updated: 2023/04/16 09:27:19 by quentinbeuk   ########   odam.nl          #
+#    Created: 2023/04/16 09:28:22 by quentinbeuk   #+#    #+#                  #
+#    Updated: 2023/04/16 10:00:09 by quentinbeuk   ########   odam.nl          #
 #                                                                              #
 # **************************************************************************** #
 
@@ -43,10 +43,6 @@ def ft_scatter_plot(ratings, pulp_fiction_ratings, forrest_gump_ratings, body_pa
     # Adjust the window size
     plt.figure(figsize=(12, 12))
 
-    # Plot a line from the origin to the point with the circle around it
-    plt.plot([0, 5], [0, 4], color='green', linestyle='--')
-    plt.plot([0, 3], [0, 4], color='green', linestyle='--')
-
     # Create a scatter plot of the ratings for Forrest Gump and Pulp Fiction
     plt.scatter(ratings['rating_pulp'], ratings['rating_gump'], alpha=0.1, s=500)
 
@@ -62,9 +58,6 @@ def ft_scatter_plot(ratings, pulp_fiction_ratings, forrest_gump_ratings, body_pa
         user_ratings = ratings[ratings['userId'] == user_id]
         plt.scatter(user_ratings['rating_pulp'], user_ratings['rating_gump'], color=color, alpha=0.03, s=500)
 
-    plt.text(1, 1, r'θ', color='green', fontsize=30)
-    plt.text(4.8, 4.18, r'User 1', color='green', fontsize=20)
-    plt.text(2.8, 4.18, r'User 0', color='green', fontsize=20)
     
     # Set the plot title and axis labels
     plt.title('Ratings for Forrest Gump and Pulp Fiction')
@@ -76,13 +69,24 @@ def ft_scatter_plot(ratings, pulp_fiction_ratings, forrest_gump_ratings, body_pa
     plt.xlim(0, 6)
 
     # Draw a circle around the point at x=5, y=4
-    circle_00 = plt.Circle((5, 4), radius=0.14, color='green', fill=False)
-    circle_01 = plt.Circle((3, 4), radius=0.14, color='green', fill=False)
+    circle_00 = plt.Circle((2, 2), radius=0.14, color='green', fill=False)
+    circle_01 = plt.Circle((4.5, 1), radius=0.14, color='green', fill=False)
     plt.gca().add_patch(circle_00)
     plt.gca().add_patch(circle_01)
+    
+    plt.plot([2, 2], [2, 1], color='green', linestyle='-')
+    plt.plot([4.5, 2], [1, 1], color='green', linestyle='-')
+    plt.plot([2, 4.5], [2, 1], color='green', linestyle='--')
+    
+    plt.text(1.8, 1.5, r'1', color='green', fontsize=16)
+    plt.text(3.25, 0.8, r'2.5', color='green', fontsize=16)
+    
+    plt.text(4, 1.57, r'distance = √(1² + 2.5²) = 0.4', color='green', fontsize=12)
+    plt.text(4, 1.4, r'similarity = 1/(1 + 0.4) = 0.714', color='green', fontsize=12)
 
     # Show the plot
     plt.show()
+    
     
 
 # ==============================================================================: MAIN

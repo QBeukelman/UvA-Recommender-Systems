@@ -38,16 +38,26 @@ MovieLens
 
 # Utility Matrix
 
-## Two-Dimentional
+## Cosign Similarity
 
 If the user has given a rating for the third movie "Body Parts", points are blue, otherwise red.
 
 $$\cos(\mathbf{A},\mathbf{B}) = \frac{\mathbf{A} \cdot \mathbf{B}}{\|\mathbf{A}\| \|\mathbf{B}\|}$$
 
 
-![2D Utility Matirx Heatmap](../media/2D_utility_matrix.png)
+![2D Utility Matirx Heatmap](../media/cosign_similarity_simple.png)
 
 <br />
+
+
+## Euclidean Similarity
+
+$$similarity_{euclidean}(a, b) = \frac{1}{1 + \sqrt{\sum_{i=1}^{n}(a_i - b_i)^2}}$$
+
+![2D Utility Matirx Heatmap](../media/euclidean_similarity_simple.png)
+
+<br />
+
 
 
 ## Milti-Dimentional
