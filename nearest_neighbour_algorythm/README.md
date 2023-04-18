@@ -7,19 +7,8 @@
 <br />
 
 
-# To-Do
-
-- Define K
-- Define threshold
-
-- Same movies recommended
-- Include catagories, with mixer
-
-<br />
 
 # Collaborative Filtering
-
-
 
 
 <br />
@@ -38,7 +27,7 @@ MovieLens
 
 # Similarity Calculations
 
-## Cosign Similarity
+## Cosign Similarity (user-based)
 
 If the user has given a rating for the third movie "Body Parts", points are blue, otherwise red.
 
@@ -50,7 +39,7 @@ $$\cos(\mathbf{A},\mathbf{B}) = \frac{\mathbf{A} \cdot \mathbf{B}}{\|\mathbf{A}\
 <br />
 
 
-## Euclidean Similarity
+## Euclidean Similarity (user-based)
 
 $$similarity_{euclidean}(a, b) = \frac{1}{1 + \sqrt{\sum_{i=1}^{n}(a_i - b_i)^2}}$$
 
@@ -60,6 +49,10 @@ $$similarity_{euclidean}(a, b) = \frac{1}{1 + \sqrt{\sum_{i=1}^{n}(a_i - b_i)^2}
 
 
 
+## Pearson Corrolation (item-based)
+
+
+<br />
 
 
 
