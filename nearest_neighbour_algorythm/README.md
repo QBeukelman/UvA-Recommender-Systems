@@ -7,9 +7,24 @@
 <br />
 
 
+This repository contains an implementation of the nearest neighbor algorithm for building a recommender system. The algorithm is based on the k-nearest neighbors approach and is designed to recommend movies to users based on their previous ratings.
 
-# Collaborative Filtering
 
+## Installation
+
+To use the algorithm, you will need to have Python installed on your system. You can download Python from the official website.
+
+You will also need to install the following packages:
+
+- pandas
+- numpy
+- scikit-learn
+
+You can install these packages using pip, by running the following command:
+
+```bash
+python3 -m pip install <package>
+```
 
 <br />
 
