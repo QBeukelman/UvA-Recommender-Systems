@@ -17,12 +17,10 @@
 
 <br />
 
+# Collaborative Filtering
 
-# Types of similarity measurements
 
-- Euclidean Similarity
-- Pearson Correlation
-- Cosine Similarity
+
 
 <br />
 
@@ -33,10 +31,12 @@ MovieLens
 20000 Movies
 100000 User Ratings
 
+![Utility Matirx Heatmap](../media/utility_matrix.png)
+
 <br />
 
 
-# Utility Matrix
+# Similarity Calculations
 
 ## Cosign Similarity
 
@@ -60,11 +60,8 @@ $$similarity_{euclidean}(a, b) = \frac{1}{1 + \sqrt{\sum_{i=1}^{n}(a_i - b_i)^2}
 
 
 
-## Milti-Dimentional
 
-![Utility Matirx Heatmap](../media/utility_matrix.png)
 
-<br />
 
 
 # Similarity Matrix
