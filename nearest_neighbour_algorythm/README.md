@@ -9,6 +9,18 @@
 
 This repository contains an implementation of the nearest neighbor algorithm for building a recommender system. The algorithm is based on the k-nearest neighbors approach and is designed to recommend movies to users based on their previous ratings.
 
+
+- [Installation](#installation)
+- [Nearest Neighbour Algorythm](#nearest-neighbour-algorythm)
+	- [The dataset](#the-dataset)
+	- [Utility Martix](#utility-martix)
+	- [Similarity Calculations](#similarity-calculations)
+		- [Cosign Similarity (user-based)](#cosign-similarity-user-based)
+		- [Euclidean Similarity (user-based)](#euclidean-similarity-user-based)
+		- [Pearson Corrolation (item-based)](#pearson-corrolation-item-based)
+	- [Similarity Matrix](#similarity-matrix)
+	- [Result](#result)
+
 <br />
 
 
@@ -46,8 +58,8 @@ Two types of collaborative filtering methods: memory-based and model-based.
 - **Memory-based methods (neighborhood-based collaborative filtering):**
 Predict the ratings of user-item combinations based on their neighborhoods, which can be defined in one of two ways:
 
-	- User-based: Ratings of like-minded users are used to make recommendations for target user.
-	- Item-based: Similar items to target item are used to predict user's rating.
+	- User-based: Similar users' ratings are used to make recommendations for a target user A. Predicted ratings of A are computed as the weighted average values of peer group ratings for each item.
+	- Item-based: To make recommendations for an item, the first step is to determine a set of similar items. The ratings of a particular user for the items in the set are determined. The weighted average of these ratings is used to predict the rating of the user for the item.
 
 	Advantages of memory-based methods: Simple to implement and resulting recommendations are easy to explain. Disadvantages of memory-based methods: Do not work well with sparse matrices and lack full coverage of rating predictions.
 
@@ -77,20 +89,45 @@ python3 -m pip install <package>
 <br />
 
 
-# The dataset
+# Nearest Neighbour Algorythm
+
+The algorythm is a study of different methods of collaborative filltering within recommender stystems.
+
+1. Data merged into the Utility Maxrix or _"Feature Space"_.
+
+2. Similarity calculations are compared.
+   
+3. A K-Nearest Neighbour algorythm recommends a list of movies for a target user.
+
+<br />
+
+
+## The dataset
 
 MovieLens
 20000 Movies
 100000 User Ratings
+
+- links.csv
+- movies.csv
+- ratings.csv
+- tags.csv
+
+<br />
+
+
+## Utility Martix
+
+Neighborhood-based methods for making recommendations involve using user-user or item-item similarity to predict ratings from a ratings matrix. The approach involves finding similar users or items in order to make predictions for specific user-item combinations.
 
 ![Utility Matirx Heatmap](../media/utility_matrix.png)
 
 <br />
 
 
-# Similarity Calculations
+## Similarity Calculations
 
-## Cosign Similarity (user-based)
+### Cosign Similarity (user-based)
 
 If the user has given a rating for the third movie "Body Parts", points are blue, otherwise red.
 
@@ -102,7 +139,7 @@ $$\cos(\mathbf{A},\mathbf{B}) = \frac{\mathbf{A} \cdot \mathbf{B}}{\|\mathbf{A}\
 <br />
 
 
-## Euclidean Similarity (user-based)
+### Euclidean Similarity (user-based)
 
 $$similarity_{euclidean}(a, b) = \frac{1}{1 + \sqrt{\sum_{i=1}^{n}(a_i - b_i)^2}}$$
 
@@ -112,7 +149,7 @@ $$similarity_{euclidean}(a, b) = \frac{1}{1 + \sqrt{\sum_{i=1}^{n}(a_i - b_i)^2}
 
 
 
-## Pearson Corrolation (item-based)
+### Pearson Corrolation (item-based)
 
 
 <br />
@@ -120,7 +157,7 @@ $$similarity_{euclidean}(a, b) = \frac{1}{1 + \sqrt{\sum_{i=1}^{n}(a_i - b_i)^2}
 
 
 
-# Similarity Matrix
+## Similarity Matrix
 
 [400 rows]
 [400 cols]
@@ -132,7 +169,7 @@ The problem with the similarity martix is that we have assumed that absent ratin
 <br />
 
 
-# Result
+## Result
 
 <pre>
 Here are some movies like: 'Taxi Driver (1976)'
