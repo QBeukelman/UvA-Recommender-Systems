@@ -29,10 +29,10 @@ The primary goal of a recommender system is to increase product sales for the me
 
 The operational and technical goals of a recommender system are:
 
-- **Relevance**: recommend items that are relevant to the user
-- **Novelty**: recommend items that the user has not seen before
-- Serendipity: recommend unexpected items that the user might find interesting
-- **Diversity**: recommend items of different types to reduce the risk of the user not liking any of them
+- **Relevance** recommend items that are relevant to the user
+- **Novelty** recommend items that the user has not seen before
+- **Serendipity** recommend unexpected items that the user might find interesting
+- **Diversity** recommend items of different types to reduce the risk of the user not liking any of them
 
 Recommender systems can also help improve user satisfaction, increase user loyalty, and provide insights for further customization.
 
