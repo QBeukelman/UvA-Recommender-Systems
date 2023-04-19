@@ -6,7 +6,7 @@
 #    By: quentinbeukelman <quentinbeukelman@stud      +#+                      #
 #                                                    +#+                       #
 #    Created: 2023/04/16 09:28:22 by quentinbeuk   #+#    #+#                  #
-#    Updated: 2023/04/19 10:14:38 by quentinbeuk   ########   odam.nl          #
+#    Updated: 2023/04/19 13:46:20 by quentinbeuk   ########   odam.nl          #
 #                                                                              #
 # **************************************************************************** #
 
@@ -81,8 +81,8 @@ def ft_scatter_plot(ratings, pulp_fiction_ratings, forrest_gump_ratings, body_pa
     plt.text(1.8, 1.5, r'1', color='green', fontsize=16)
     plt.text(3.25, 0.8, r'2.5', color='green', fontsize=16)
     
-    plt.text(4, 1.57, r'distance = √(1² + 2.5²) = 0.4', color='green', fontsize=12)
-    plt.text(4, 1.4, r'similarity = 1/(1 + 0.4) = 0.714', color='green', fontsize=12)
+    plt.text(1.95, 2.18, r'a', color='green', fontsize=20)
+    plt.text(4.45, 1.18, r'b', color='green', fontsize=20)
 
     # Show the plot
     plt.show()

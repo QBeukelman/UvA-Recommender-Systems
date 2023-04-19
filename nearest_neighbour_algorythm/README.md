@@ -137,7 +137,26 @@ Neighborhood-based methods for making recommendations involve using user-user or
 
 If the user has given a rating for the third movie "Body Parts", points are blue, otherwise red.
 
-$$\cos(\mathbf{A},\mathbf{B}) = \frac{\mathbf{A} \cdot \mathbf{B}}{\|\mathbf{A}\| \|\mathbf{B}\|}$$
+$$\cos(\mathbf{a},\mathbf{b}) = \frac{\mathbf{a} \cdot \mathbf{b}}{\|\mathbf{a}\| \|\mathbf{b}\|}$$
+
+Consider the table below, with ratings 0 - 10:
+
+|  | **i1** | **i2** | **i3** | **i4** | **i5** | **i6** |
+| --- | --- | --- | --- | --- | --- | --- |
+| **u1** | 7 | 6 | 7 | 4 | 5 | 4 |
+| **u1** | 6 | 7 | ? | 4 | 3 | 4 |
+| **u1** | <span style="color:red"> **?** </span> | 3 | 3 | 1 | 1 | ? |
+| **u1** | 1 | 2 | 2 | 3 | 3 | 4 |
+| **u1** | 1 | ? | 1 | 2 | 3 | 3 |
+
+<br />
+
+
+The first step is to compute the similarity between user 3 and all the other users. Cosign (1, 3) is calculated as:
+
+$$
+\cos(1,3) = \frac{6 \cdot 3 + 7 \cdot 3 + 4 \cdot 1 + 5 \cdot 1}{\sqrt{62 + 72 + 42 + 52} \cdot \sqrt{3^2 + 3^2 + 1^2 + 1^2}} = 0.956
+$$
 
 
 ![2D Utility Matirx Heatmap](../media/cosign_similarity_simple.png)
@@ -147,7 +166,13 @@ $$\cos(\mathbf{A},\mathbf{B}) = \frac{\mathbf{A} \cdot \mathbf{B}}{\|\mathbf{A}\
 
 ### Euclidean Similarity (user-based)
 
-$$similarity_{euclidean}(a, b) = \frac{1}{1 + \sqrt{\sum_{i=1}^{n}(a_i - b_i)^2}}$$
+$$
+distance = √(1² + 2.5²) = 0.4
+$$
+
+$$
+similarity = 1/(1 + 0.4) = 0.714
+$$
 
 ![2D Utility Matirx Heatmap](../media/euclidean_similarity_simple.png)
 
@@ -157,6 +182,7 @@ $$similarity_{euclidean}(a, b) = \frac{1}{1 + \sqrt{\sum_{i=1}^{n}(a_i - b_i)^2}
 
 ### Pearson Corrolation (item-based)
 
+![2D Utility Matirx Heatmap](../media/pearson_correlation_simple.png)
 
 <br />
 
@@ -182,29 +208,6 @@ It produces a list of the top k = 10 recommended movies.
 
 <br />
 
-
-### Simple Example
-
-Consider the table below, with ratings 0 - 10:
-
-|  | **i1** | **i2** | **i3** | **i4** | **i5** | **i6** |
-| --- | --- | --- | --- | --- | --- | --- |
-| **u1** | 7 | 6 | 7 | 4 | 5 | 4 |
-| **u1** | 6 | 7 | ? | 4 | 3 | 4 |
-| **u1** | <span style="color:red"> **?** </span> | 3 | 3 | 1 | 1 | ? |
-| **u1** | 1 | 2 | 2 | 3 | 3 | 4 |
-| **u1** | 1 | ? | 1 | 2 | 3 | 3 |
-
-<br />
-
-
-The first step is to compute the similarity between user 3 and all the other users. Cosign (1, 3) is calculated as:
-
-$$
-\cos(1,3) = \frac{6 \cdot 3 + 7 \cdot 3 + 4 \cdot 1 + 5 \cdot 1}{\sqrt{62 + 72 + 42 + 52} \cdot \sqrt{3^2 + 3^2 + 1^2 + 1^2}} = 0.956
-$$
-
-<br />
 
 
 Simalarity to u3:
