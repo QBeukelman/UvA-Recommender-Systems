@@ -10,6 +10,10 @@
 This repository contains an implementation of the nearest neighbor algorithm for building a recommender system. The algorithm is based on the k-nearest neighbors approach and is designed to recommend movies to users based on their previous ratings.
 
 
+- [About Collaborative Filtering](#about-collaborative-filtering)
+		- [The Recommendation Problem](#the-recommendation-problem)
+		- [Goals of Recommender Systems](#goals-of-recommender-systems)
+		- [Collaborative Filtering Approaches](#collaborative-filtering-approaches)
 - [Installation](#installation)
 - [Nearest Neighbour Algorythm](#nearest-neighbour-algorythm)
 	- [The dataset](#the-dataset)
@@ -24,7 +28,9 @@ This repository contains an implementation of the nearest neighbor algorithm for
 <br />
 
 
-## The Recommendation Problem
+# About Collaborative Filtering
+
+### The Recommendation Problem
 
 The recommendation problem can be formulated in two primary models: the prediction version and the ranking version. 
 
@@ -35,7 +41,7 @@ The recommendation problem can be formulated in two primary models: the predicti
 <br />
 
 
-## Goals of Recommender Systems
+### Goals of Recommender Systems
 
 The primary goal of a recommender system is to increase product sales for the merchant.
 
@@ -51,7 +57,7 @@ Recommender systems can also help improve user satisfaction, increase user loyal
 <br />
 
 
-## Collaborative Filtering Approaches
+### Collaborative Filtering Approaches
 
 Two types of collaborative filtering methods: memory-based and model-based.
 
@@ -169,7 +175,53 @@ The problem with the similarity martix is that we have assumed that absent ratin
 <br />
 
 
-## Result
+## Recommend Movies to User (K-Nearest Neighbour)
+
+The program takes a user ID, ranging from 1 - 600.
+It produces a list of the top k = 10 recommended movies.
+
+<br />
+
+
+### Simple Example
+
+Consider the table below, with ratings 0 - 10:
+
+|  | **i1** | **i2** | **i3** | **i4** | **i5** | **i6** |
+| --- | --- | --- | --- | --- | --- | --- |
+| **u1** | 7 | 6 | 7 | 4 | 5 | 4 |
+| **u1** | 6 | 7 | ? | 4 | 3 | 4 |
+| **u1** | <span style="color:red"> **?** </span> | 3 | 3 | 1 | 1 | ? |
+| **u1** | 1 | 2 | 2 | 3 | 3 | 4 |
+| **u1** | 1 | ? | 1 | 2 | 3 | 3 |
+
+<br />
+
+
+The first step is to compute the similarity between user 3 and all the other users. Cosign (1, 3) is calculated as:
+
+$$
+\cos(1,3) = \frac{6 \cdot 3 + 7 \cdot 3 + 4 \cdot 1 + 5 \cdot 1}{\sqrt{62 + 72 + 42 + 52} \cdot \sqrt{3^2 + 3^2 + 1^2 + 1^2}} = 0.956
+$$
+
+<br />
+
+
+Simalarity to u3:
+
+|  | **S u3** |
+| --- | --- |
+| **u1** | 0.894 |
+| **u2** | 0.939 |
+| **u3** | 1.0 |
+| **u4** | -1.0 |
+| **u5** | -0.817 |
+
+
+
+
+<br />
+
 
 <pre>
 Here are some movies like: 'Taxi Driver (1976)'
