@@ -9,8 +9,37 @@
 
 This repository contains an implementation of the nearest neighbor algorithm for building a recommender system. The algorithm is based on the k-nearest neighbors approach and is designed to recommend movies to users based on their previous ratings.
 
+<br />
 
-## Installation
+
+## The Recommendation Problem
+
+The recommendation problem can be formulated in two primary models: the prediction version and the ranking version. 
+
+> **Pridiction** In the prediction version, the goal is to predict the rating value for a user-item combination using available training data. This is known as the matrix completion problem, where the missing values are predicted using a learning algorithm. 
+
+> **Ranking** In the ranking version, the goal is to recommend the top-k items for a particular user, and the absolute values of the predicted ratings are not important. The ranking formulation is more common and referred to as the top-k recommendation problem. The solutions to the ranking version can be derived by solving the prediction version for various user-item combinations and then ranking the predictions. However, it is often easier to design methods for solving the ranking version directly.
+
+<br />
+
+
+## Goals of Recommender Systems
+
+The primary goal of a recommender system is to increase product sales for the merchant.
+
+The operational and technical goals of a recommender system are:
+
+- **Relevance**: recommend items that are relevant to the user
+- **Novelty**: recommend items that the user has not seen before
+- Serendipity: recommend unexpected items that the user might find interesting
+- **Diversity**: recommend items of different types to reduce the risk of the user not liking any of them
+
+Recommender systems can also help improve user satisfaction, increase user loyalty, and provide insights for further customization.
+
+<br />
+
+
+# Installation
 
 To use the algorithm, you will need to have Python installed on your system. You can download Python from the official website.
 
