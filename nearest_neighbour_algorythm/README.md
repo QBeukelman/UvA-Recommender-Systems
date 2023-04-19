@@ -49,14 +49,10 @@ Predict the ratings of user-item combinations based on their neighborhoods, whic
 	- User-based: Ratings of like-minded users are used to make recommendations for target user.
 	- Item-based: Similar items to target item are used to predict user's rating.
 
-	Advantages of memory-based methods: Simple to implement and resulting recommendations are easy to explain.
-
-	Disadvantages of memory-based methods: Do not work well with sparse matrices and lack full coverage of rating predictions.
+	Advantages of memory-based methods: Simple to implement and resulting recommendations are easy to explain. Disadvantages of memory-based methods: Do not work well with sparse matrices and lack full coverage of rating predictions.
 
 - **Model-based methods:** 
-	Use machine learning and data mining methods in the context of predictive models. Parameters of model-based methods are learned within an optimization framework. 
-	
-	Model-based methods have a high level of coverage even for sparse ratings matrices.
+	Use machine learning and data mining methods in the context of predictive models. Parameters of model-based methods are learned within an optimization framework. Model-based methods have a high level of coverage even for sparse ratings matrices.
 
 <br />
 
