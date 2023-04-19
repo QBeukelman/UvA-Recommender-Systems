@@ -16,9 +16,9 @@ This repository contains an implementation of the nearest neighbor algorithm for
 
 The recommendation problem can be formulated in two primary models: the prediction version and the ranking version. 
 
-> **Pridiction** In the prediction version, the goal is to predict the rating value for a user-item combination using available training data. This is known as the matrix completion problem, where the missing values are predicted using a learning algorithm. 
+- **Pridiction** In the prediction version, the goal is to predict the rating value for a user-item combination using available training data. This is known as the matrix completion problem, where the missing values are predicted using a learning algorithm. 
 
-> **Ranking** In the ranking version, the goal is to recommend the top-k items for a particular user, and the absolute values of the predicted ratings are not important. The ranking formulation is more common and referred to as the top-k recommendation problem. The solutions to the ranking version can be derived by solving the prediction version for various user-item combinations and then ranking the predictions. However, it is often easier to design methods for solving the ranking version directly.
+- **Ranking** In the ranking version, the goal is to recommend the top-k items for a particular user, and the absolute values of the predicted ratings are not important. The ranking formulation is more common and referred to as the top-k recommendation problem. The solutions to the ranking version can be derived by solving the prediction version for various user-item combinations and then ranking the predictions. However, it is often easier to design methods for solving the ranking version directly.
 
 <br />
 
@@ -37,6 +37,29 @@ The operational and technical goals of a recommender system are:
 Recommender systems can also help improve user satisfaction, increase user loyalty, and provide insights for further customization.
 
 <br />
+
+
+## Collaborative Filtering Approaches
+
+Two types of collaborative filtering methods: memory-based and model-based.
+
+- **Memory-based methods (neighborhood-based collaborative filtering):**
+Predict the ratings of user-item combinations based on their neighborhoods, which can be defined in one of two ways:
+
+	- User-based: Ratings of like-minded users are used to make recommendations for target user.
+	- Item-based: Similar items to target item are used to predict user's rating.
+
+	Advantages of memory-based methods: Simple to implement and resulting recommendations are easy to explain.
+
+	Disadvantages of memory-based methods: Do not work well with sparse matrices and lack full coverage of rating predictions.
+
+- **Model-based methods:** 
+	Use machine learning and data mining methods in the context of predictive models. Parameters of model-based methods are learned within an optimization framework. 
+	
+	Model-based methods have a high level of coverage even for sparse ratings matrices.
+
+<br />
+
 
 
 # Installation
