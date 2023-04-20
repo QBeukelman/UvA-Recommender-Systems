@@ -6,7 +6,7 @@
 #    By: quentinbeukelman <quentinbeukelman@stud      +#+                      #
 #                                                    +#+                       #
 #    Created: 2023/04/19 13:51:58 by quentinbeuk   #+#    #+#                  #
-#    Updated: 2023/04/19 14:20:33 by quentinbeuk   ########   odam.nl          #
+#    Updated: 2023/04/20 07:50:12 by quentinbeuk   ########   odam.nl          #
 #                                                                              #
 # **************************************************************************** #
 
@@ -45,7 +45,7 @@ def ft_scatter_plot(ratings, pulp_fiction_ratings, forrest_gump_ratings, body_pa
     joint_plot = sns.jointplot(data=ratings, x="rating_pulp", y="rating_gump", kind="kde", height=12)
 
     # Add a regression line to the jointplot
-    sns.regplot(data=ratings, x="rating_pulp", y="rating_gump", ax=joint_plot.ax_joint, scatter=False, color='red')
+    sns.regplot(data=ratings, x="rating_pulp", y="rating_gump", ax=joint_plot.ax_joint, scatter=True, color='red')
 
     # Set the plot title and axis labels
     plt.subplots_adjust(top=0.95) # to avoid title overlap with plot

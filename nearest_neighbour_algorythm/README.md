@@ -182,6 +182,8 @@ $$
 
 ### Pearson Corrolation (item-based)
 
+Define positive and negative corolations
+
 ![2D Utility Matirx Heatmap](../media/pearson_correlation_simple.png)
 
 <br />
