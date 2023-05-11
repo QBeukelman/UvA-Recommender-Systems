@@ -180,9 +180,11 @@ $$
 
 
 
-### Pearson Corrolation (item-based)
+### Pearson Corrolation (user-based)
 
 Define positive and negative corolations
+
+$$r_{\mathbf{a},\mathbf{b}} = \frac{\sum_{i=1}^n (a_i - \bar{a})(b_i - \bar{b})}{\sqrt{\sum_{i=1}^n (a_i - \bar{a})^2} \sqrt{\sum_{i=1}^n (b_i - \bar{b})^2}}$$
 
 ![2D Utility Matirx Heatmap](../media/pearson_correlation_simple.png)
 
@@ -199,6 +201,15 @@ Define positive and negative corolations
 The problem with the similarity martix is that we have assumed that absent ratings are 0. To fix this we can use a Centered-Cosign. Normalise the ratings of a given user by subtracting the row mean.
 
 ![Similarity Matrix Heatmap](../media/similarity_matrix.png)
+
+<br />
+
+
+## Pridict User Rating
+
+$$ \hat{r}_ {uj} = \mu_u + \frac{\sum_{v\in Pu(j)} \text{Sim}(u,v) \cdot s_{vj}}{\sum_{v\in Pu(j)} |\text{Sim}(u,v)|} $$
+
+where $\hat{r}_ {uj}$ is the predicted rating of target user u for item j, $\mu_u$ is the mean rating of user u, $s_{vj}$ is the mean-centered rating of user v for item j, $\text{Sim}(u,v)$ is the Pearson correlation coefficient between user u and user v, and $Pu(j)$ is the set of k closest users to target user u, who have specified ratings for item j (Aggarwal, 2016, p. 36).
 
 <br />
 
@@ -244,3 +255,9 @@ Little Buddha (1993)                                0.6106
 </pre>
 
 <br />
+
+
+
+# Citations
+
+Aggarwal, C. C. (2016). Recommender systems: The textbook. Springer International Publishing.
