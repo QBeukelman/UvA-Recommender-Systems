@@ -38,7 +38,7 @@ $$
 
 A cosine similarity example can be visualized using a heatmap as shown below (if the target user has given a rating for the third movie "Body Parts", points are `blue`, if not points are `red`):
 
-![2D Utility Matirx Heatmap](..\media/cosign_similarity_simple.png)
+![2D Utility Matirx Heatmap](../media/cosign_similarity_simple.png)
 
 ---
 <br />
@@ -68,7 +68,7 @@ $$
 
 A heatmap can be used to visualize the Euclidean similarity calculation (if the target user has given a rating for the third movie "Body Parts", points are `blue`, if not points are `red`):
 
-![2D Utility Matirx Heatmap](..\media/euclidean_similarity_simple.png)
+![2D Utility Matirx Heatmap](../media/euclidean_similarity_simple.png)
 
 ---
 <br />
@@ -85,7 +85,7 @@ Here, $\bar{a}$ and $\bar{b}$ represent the mean ratings of vectors a and b, res
 
 A heatmap can be utilized to visualize the Pearson correlation coefficients between users, as shown below:
 
-![2D Utility Matirx Heatmap](..\media/pearson_correlation_simple.png)
+![2D Utility Matirx Heatmap](../media/pearson_correlation_simple.png)
 
 ---
 <br />

@@ -26,7 +26,7 @@ Neighborhood-based methods for making recommendations involve using user-user or
 
 The utility matrix, also known as the feature space, is constructed by merging the data and represents the ratings given by users for different items. Each row in the utility matrix corresponds to a user, and each column corresponds to an item. The values in the matrix represent the ratings given by users to the corresponding items.
 
-![Utility Matirx Heatmap](..\media/utility_matrix.png)
+![Utility Matirx Heatmap](../media/utility_matrix.png)
 
 ---
 <br />
@@ -44,7 +44,7 @@ Further comparison between these methods is given in `/Similarity_Calculations`,
 
 Below is a heatmap showing the Cosign Similarity based on the above Utility Matrix.
 
-![Similarity Matrix Heatmap](..\media/similarity_matrix.png)
+![Similarity Matrix Heatmap](../media/similarity_matrix.png)
 
 ---
 <br />

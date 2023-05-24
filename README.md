@@ -7,8 +7,8 @@ This repository contains a selection of cource material form the Recommender Sys
 
 The repository consists of two algotythms based on the K Nearest Neighbors (KNN) approach; along with supporting data preperation and calculations, that solve two common problems with recommender systems:
 
-1. How to rank relevant content?
-2. How to pridict the rating a user will give to content?
+1. Ranking Problem: How to rank relevant content?
+2. Pridiction Problem: How to pridict the rating a user will give to content?
 
 ---
 <br />
