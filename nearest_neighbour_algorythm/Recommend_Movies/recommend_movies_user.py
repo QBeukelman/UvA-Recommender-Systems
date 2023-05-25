@@ -6,7 +6,7 @@
 #    By: quentinbeukelman <quentinbeukelman@stud      +#+                      #
 #                                                    +#+                       #
 #    Created: 2023/04/18 19:45:10 by quentinbeuk   #+#    #+#                  #
-#    Updated: 2023/04/18 19:54:54 by quentinbeuk   ########   odam.nl          #
+#    Updated: 2023/05/25 10:24:45 by quentinbeuk   ########   odam.nl          #
 #                                                                              #
 # **************************************************************************** #
 
@@ -32,7 +32,7 @@ def ft_recommend_list(ui, n=10, threshold=0.5):
         sim_values = [movie[1] for movie in sorted_scores[:n]]
 
         return top_movies, sim_values
-
+        
 
 def ft_sort_scores(similarity_scores, threshold):
     weighted_scores = {}

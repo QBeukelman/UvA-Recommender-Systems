@@ -6,7 +6,7 @@
 #    By: quentinbeukelman <quentinbeukelman@stud      +#+                      #
 #                                                    +#+                       #
 #    Created: 2023/05/11 10:59:58 by quentinbeuk   #+#    #+#                  #
-#    Updated: 2023/05/11 12:37:58 by quentinbeuk   ########   odam.nl          #
+#    Updated: 2023/05/25 10:24:56 by quentinbeuk   ########   odam.nl          #
 #                                                                              #
 # **************************************************************************** #
 
@@ -71,6 +71,7 @@ def ft_predict_rating(ratings_table):
     print("Number of ratings not null or NaN in predicted_ratings_table:", predicted_ratings_table.notnull().sum().sum())
 
     return predicted_ratings_table
+
 
 def main():
     # Load ratings table
