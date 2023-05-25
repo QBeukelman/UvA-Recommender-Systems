@@ -104,7 +104,7 @@ Number of ratings not null or NaN: 5,931,640
 
 # 2. Ranking Problem
 
-To recommend movies to a user, the program takes a user ID ranging from `1 to 600` and generates a list of the top `k = 10` recommended movies. The recommendations are based on the similarity of the target user to other users in the dataset.
+To recommend movies to a user, the program takes a user ID ranging from `1 to 600` and generates a list of the top `k = 10` recommended movies. The recommendations are based on the similarity of the target movie to other movies in the dataset.
 
 <br />
 
