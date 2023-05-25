@@ -3,7 +3,7 @@
 	About
 </h1>
 
-This repository contains a selection of cource material form the Recommender Systems course from the Univercity of Amserdam. The course detials various methods of collaborative filtering, and is based in the Python programming language.
+This repository contains a selection of cource material form the Recommender Systems course from the University of Amserdam. The course detials various methods of collaborative filtering, and is based in the Python programming language.
 
 The repository consists of two algotythms based on the K Nearest Neighbors (KNN) approach; along with supporting data preperation and calculations, that solve two common problems with recommender systems:
 
